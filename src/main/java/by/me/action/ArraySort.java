@@ -2,8 +2,13 @@ package by.me.action;
 
 import by.me.entity.Array;
 import by.me.exception.ArrayException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ArraySort {
+
+    private static final Logger logger = LogManager.getLogger();
+
     public void bubbleSort(Array array){
         int n = array.getSize();
         try {
@@ -15,8 +20,9 @@ public class ArraySort {
                 }
             }
         }catch (ArrayException e){
-            //log
+            logger.error(e.getMessage());
         }
+        logger.info("Array is sorted by bubble sorting");
     }
 
     public void selectionSort(Array array){
@@ -27,6 +33,7 @@ public class ArraySort {
                 swap(array, i, minIndex);
             }
         }
+        logger.info("Array is sorted by selection sorting");
     }
 
     public void insertSort(Array array){
@@ -42,8 +49,9 @@ public class ArraySort {
                 array.setElement(j+1, value);
             }
         }catch (ArrayException e){
-
+            logger.error(e.getMessage());
         }
+        logger.info("Array is sorted by insert sorting");
     }
 
     private void swap(Array array, int i, int j){
@@ -52,7 +60,7 @@ public class ArraySort {
             array.setElement(j, array.getElement(i));
             array.setElement(i, temp);
         }catch (ArrayException e){
-            //
+            logger.error(e.getMessage());
         }
     }
 
@@ -70,7 +78,7 @@ public class ArraySort {
                 }
             }
         } catch (ArrayException e) {
-            //
+            logger.error(e.getMessage());
         }
         return minIndex;
     }

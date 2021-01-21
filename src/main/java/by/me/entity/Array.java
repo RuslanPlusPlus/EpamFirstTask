@@ -1,11 +1,14 @@
 package by.me.entity;
 
 import by.me.exception.ArrayException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
 public class Array {
     private int[] array;
+    private static final Logger logger = LogManager.getLogger();
 
     public Array(int[] array){
         this.array = array;
@@ -27,7 +30,7 @@ public class Array {
             return this.array[i];
         }
         else{
-            throw new ArrayException();
+            throw new ArrayException("Passed index is out of bounds");
         }
     }
 
@@ -36,7 +39,7 @@ public class Array {
             this.array[i] = value;
         }
         else {
-            throw new ArrayException();
+            throw new ArrayException("Passed index is out of bounds");
         }
     }
 
@@ -70,7 +73,7 @@ public class Array {
                 }
             }
         }catch (ArrayException e){
-
+            logger.error(e.getMessage());
         }
         return true;
     }
@@ -78,7 +81,7 @@ public class Array {
     @Override
     public String toString() {
         return "Array{" +
-                "array=" + Arrays.toString(array) +
+                Arrays.toString(array) +
                 '}';
     }
 }

@@ -2,18 +2,15 @@ package by.me.action;
 
 import by.me.entity.Array;
 import by.me.exception.ArrayException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ArrayUtils {
+
+    private static final Logger logger = LogManager.getLogger();
+
     public static void display(Array array){
-        int n = array.getSize();
-        for (int i = 0; i < n; i++){
-            try {
-                System.out.print(array.getElement(i) + " ");
-            } catch (ArrayException e) {
-                //log...
-            }
-        }
-        System.out.println();
+        logger.info(array);
     }
 
     public static int getMinValue(Array array){
@@ -43,7 +40,7 @@ public class ArrayUtils {
                 }
             }
         } catch (ArrayException e) {
-            // log
+            logger.error(e.getMessage());
         }
         return maxValue;
     }
@@ -55,7 +52,7 @@ public class ArrayUtils {
             try {
                 sum += array.getElement(i);
             } catch (ArrayException e) {
-                // log
+                logger.error(e.getMessage());
             }
         }
         return sum;
@@ -74,7 +71,7 @@ public class ArrayUtils {
                     counter++;
                 }
             } catch (ArrayException e) {
-                // log...
+                logger.error(e.getMessage());
             }
         }
         return counter;
