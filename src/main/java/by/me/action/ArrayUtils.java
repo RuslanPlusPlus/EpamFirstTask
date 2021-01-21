@@ -3,7 +3,7 @@ package by.me.action;
 import by.me.entity.Array;
 import by.me.exception.ArrayException;
 
-public class ArrayUtil {
+public class ArrayUtils {
     public static void display(Array array){
         int n = array.getSize();
         for (int i = 0; i < n; i++){
@@ -62,7 +62,7 @@ public class ArrayUtil {
     }
 
     public static double getAverageValue(Array array){
-        return ArrayUtil.getElementsSum(array) / (double)array.getSize();
+        return ArrayUtils.getElementsSum(array) / (double)array.getSize();
     }
 
     public static int countNegative(Array array){
