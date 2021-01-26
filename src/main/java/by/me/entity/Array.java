@@ -14,9 +14,9 @@ public class Array {
         this.array = array;
     }
 
-    public Array(int n){
+    public Array(int n) throws ArrayException{
         if (n < 1) {
-            throw new IllegalArgumentException("Array size cannot be less than 1");
+            throw new ArrayException("Array size cannot be less than 1");
         }
         this.array = new int[n];
     }
@@ -43,6 +43,7 @@ public class Array {
         }
     }
 
+    //check if passed index belongs to array range
     private boolean checkRange(int i){
         return i >= 0 && i < this.array.length;
     }

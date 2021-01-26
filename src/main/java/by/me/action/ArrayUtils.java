@@ -9,11 +9,11 @@ public class ArrayUtils {
 
     private static final Logger logger = LogManager.getLogger();
 
-    public static void display(Array array){
+    public void display(Array array){
         logger.info(array);
     }
 
-    public static int getMinValue(Array array){
+    public int getMinValue(Array array){
         int n = array.getSize();
         int minValue = 0;
         try {
@@ -29,7 +29,7 @@ public class ArrayUtils {
         return minValue;
     }
 
-    public static int getMaxValue(Array array){
+    public int getMaxValue(Array array){
         int n = array.getSize();
         int maxValue = 0;
         try {
@@ -45,7 +45,7 @@ public class ArrayUtils {
         return maxValue;
     }
 
-    public static int getElementsSum(Array array){
+    public int getElementsSum(Array array){
         int n = array.getSize();
         int sum = 0;
         for (int i = 0; i < n; i++){
@@ -58,11 +58,11 @@ public class ArrayUtils {
         return sum;
     }
 
-    public static double getAverageValue(Array array){
-        return ArrayUtils.getElementsSum(array) / (double)array.getSize();
+    public double getAverageValue(Array array){
+        return getElementsSum(array) / (double)array.getSize();
     }
 
-    public static int countNegative(Array array){
+    public int countNegative(Array array){
         int n = array.getSize();
         int counter = 0;
         for (int i = 0; i < n; i++){

@@ -1,11 +1,11 @@
-package by.me.initializer;
+package by.me.creator;
 
 import by.me.entity.Array;
 import by.me.exception.ArrayException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class ArrayInitializer {
+public class ArrayCreator {
 
     private static final Logger logger = LogManager.getLogger();
 

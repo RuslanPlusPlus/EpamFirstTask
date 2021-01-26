@@ -9,23 +9,26 @@ import static org.testng.Assert.*;
 
 public class ArraySortTest {
 
+    private int[] arr1;
+    private int[] arr2;
     private ArraySort arraySort;
 
     @BeforeMethod
     public void setUp() {
+        this.arr1 = new int[]{9, 89, -23, 0};
+        this.arr2 = new int[]{-23, 0, 9, 89};
         this.arraySort = new ArraySort();
     }
 
     @AfterMethod
     public void tearDown() {
+        this.arr1 = null;
+        this.arr2 = null;
         this.arraySort = null;
     }
 
     @Test
     public void testSelectionSort() {
-        int[] arr1 = {9, 89, -23, 0};
-        int[] arr2 = {-23, 0, 9, 89};
-
         Array actual = new Array(arr1);
         this.arraySort.selectionSort(actual);
         Array expected = new Array(arr2);
@@ -34,9 +37,6 @@ public class ArraySortTest {
 
     @Test
     public void testBubbleSort() {
-        int[] arr1 = {9, 89, -23, 0};
-        int[] arr2 = {-23, 0, 9, 89};
-
         Array actual = new Array(arr1);
         this.arraySort.bubbleSort(actual);
         Array expected = new Array(arr2);
@@ -45,9 +45,6 @@ public class ArraySortTest {
 
     @Test
     public void testInsertSort() {
-        int[] arr1 = {9, 89, -23, 0};
-        int[] arr2 = {-23, 0, 9, 89};
-
         Array actual = new Array(arr1);
         this.arraySort.insertSort(actual);
         Array expected = new Array(arr2);
