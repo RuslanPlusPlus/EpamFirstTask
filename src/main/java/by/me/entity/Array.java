@@ -81,8 +81,7 @@ public class Array {
 
     @Override
     public String toString() {
-        return "Array{" +
-                Arrays.toString(array) +
-                '}';
+        return "Array: " +
+                Arrays.toString(array);
     }
 }

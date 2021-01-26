@@ -5,6 +5,7 @@ import by.me.action.ArrayUtils;
 import by.me.entity.Array;
 import by.me.creator.ArrayCreator;
 import by.me.exception.ParserException;
+import by.me.exception.ReaderException;
 import by.me.parser.DataParser;
 import by.me.reader.DataReader;
 import by.me.validator.Validator;
@@ -12,12 +13,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Main {
 
     static final Logger logger = LogManager.getLogger();
+    private static final String FILE_PATH = "Files/arrays.txt";
 
     public static void main(String[] args) {
         /*ArrayCreator arrayCreator = new ArrayCreator();
@@ -37,12 +40,14 @@ public class Main {
         DataReader reader = DataReader.getInstance();
         DataParser parser = new DataParser();
         try {
-            List<String> lines = reader.readLines("arrays.txt");
+            List<String> lines = reader.readLines(FILE_PATH);
             List<Array> arrayList = parser.parseLines(lines);
+            List<String> arraysToDisplay = new ArrayList<>();
             for (Array array: arrayList){
-                System.out.println(array);
+                arraysToDisplay.add(array.toString());
             }
-        } catch (IOException | ParserException e) {
+            logger.info(arraysToDisplay);
+        } catch (ParserException | ReaderException e) {
             logger.error(e.getMessage());
         }
 
