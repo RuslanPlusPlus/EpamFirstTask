@@ -8,16 +8,16 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
 
-public class ArrayUtilsTest {
+public class ArrayStreamUtilsTest {
 
     private int[] array;
-    private ArrayUtils arrayUtils;
+    private ArrayStreamUtils arrayUtils;
     private Array testArray;
 
     @BeforeMethod
     public void setUp() throws ArrayException {
         this.array = new int[]{-34, 1001, 82, -4, 8, 93};
-        this.arrayUtils = new ArrayUtils();
+        this.arrayUtils = new ArrayStreamUtils();
         this.testArray = new Array(this.array);
     }
 
@@ -29,16 +29,16 @@ public class ArrayUtilsTest {
     }
 
     @Test
-    public void testFindMinValue() {
-        int expected = -34;
-        int actual = arrayUtils.findMinValue(testArray);
+    public void testFindMaxValue() {
+        int expected = 1001;
+        int actual = arrayUtils.findMaxValue(testArray);
         assertEquals(actual,expected);
     }
 
     @Test
-    public void testFindMaxValue(){
-        int expected = 1001;
-        int actual = arrayUtils.findMaxValue(testArray);
+    public void testFindMinValue() {
+        int expected = -34;
+        int actual = arrayUtils.findMinValue(testArray);
         assertEquals(actual,expected);
     }
 

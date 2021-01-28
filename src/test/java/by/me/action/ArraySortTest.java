@@ -1,6 +1,7 @@
 package by.me.action;
 
 import by.me.entity.Array;
+import by.me.exception.ArrayException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -28,7 +29,7 @@ public class ArraySortTest {
     }
 
     @Test
-    public void testSelectionSort() {
+    public void testSelectionSort() throws ArrayException {
         Array actual = new Array(arr1);
         this.arraySort.selectionSort(actual);
         Array expected = new Array(arr2);
@@ -36,7 +37,7 @@ public class ArraySortTest {
     }
 
     @Test
-    public void testBubbleSort() {
+    public void testBubbleSort() throws ArrayException {
         Array actual = new Array(arr1);
         this.arraySort.bubbleSort(actual);
         Array expected = new Array(arr2);
@@ -44,7 +45,7 @@ public class ArraySortTest {
     }
 
     @Test
-    public void testInsertSort() {
+    public void testInsertSort() throws ArrayException {
         Array actual = new Array(arr1);
         this.arraySort.insertSort(actual);
         Array expected = new Array(arr2);

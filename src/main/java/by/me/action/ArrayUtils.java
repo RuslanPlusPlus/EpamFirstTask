@@ -9,45 +9,44 @@ public class ArrayUtils {
 
     private static final Logger logger = LogManager.getLogger();
 
-    public void display(Array array){
-        logger.info(array);
-    }
-
-    public int getMinValue(Array array){
+    public int findMinValue(Array array){
         int n = array.getSize();
-        int minValue = 0;
-        try {
-            minValue = array.getElement(0);
-            for (int i = 0; i < n; i++){
-                if (array.getElement(i) < minValue){
-                    minValue = array.getElement(i);
-                }
+        int[] clonedArray = array.getClonedArray();
+        int minValue = clonedArray[0];
+        for (int i = 0; i < n; i++){
+            if (clonedArray[i] < minValue){
+                minValue = clonedArray[i];
             }
-        } catch (ArrayException e) {
-            //
         }
         return minValue;
     }
 
-    public int getMaxValue(Array array){
+    public int findMaxValue(Array array){
         int n = array.getSize();
-        int maxValue = 0;
-        try {
-            maxValue = array.getElement(0);
-            for (int i = 0; i < n; i++){
-                if (array.getElement(i) > maxValue){
-                    maxValue = array.getElement(i);
-                }
+        int[] clonedArray = array.getClonedArray();
+        int maxValue = clonedArray[0];
+        for (int i = 0; i < n; i++){
+            if (clonedArray[i] > maxValue){
+                maxValue = clonedArray[i];
             }
-        } catch (ArrayException e) {
-            logger.error(e.getMessage());
         }
         return maxValue;
     }
 
-    public int getElementsSum(Array array){
+    public int findElementsSum(Array array){
         int n = array.getSize();
         int sum = 0;
+        int[] clonedArray = array.getClonedArray();
+        for (int i = 0; i < n; i++){
+            sum += clonedArray[i];
+        }
+        return sum;
+    }
+
+    public double findAverageValue(Array array){
+        int n = array.getSize();
+        int sum = 0;
+        int[] clonedArray = array.getClonedArray();
         for (int i = 0; i < n; i++){
             try {
                 sum += array.getElement(i);
@@ -55,25 +54,34 @@ public class ArrayUtils {
                 logger.error(e.getMessage());
             }
         }
-        return sum;
+        double average = (double) sum/n;
+        return average;
     }
 
-    public double getAverageValue(Array array){
-        return getElementsSum(array) / (double)array.getSize();
-    }
-
-    public int countNegative(Array array){
+    public int countNegativeValues(Array array){
         int n = array.getSize();
         int counter = 0;
+        int[] clonedArray = array.getClonedArray();
         for (int i = 0; i < n; i++){
-            try {
-                if (array.getElement(i) < 0){
-                    counter++;
-                }
-            } catch (ArrayException e) {
-                logger.error(e.getMessage());
+            if (clonedArray[i] < 0){
+                counter++;
             }
         }
         return counter;
+    }
+
+    public void replaceAllEvenByZero(Array array){
+        int n = array.getSize();
+        int[] clonedArray = array.getClonedArray();
+        for (int i = 0; i < n; i++){
+            if (clonedArray[i] % 2 == 0){
+                clonedArray[i] = 0;
+            }
+        }
+        try {
+            array.setArray(clonedArray);
+        } catch (ArrayException e) {
+            e.printStackTrace();
+        }
     }
 }

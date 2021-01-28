@@ -10,8 +10,15 @@ public class Array {
     private int[] array;
     private static final Logger logger = LogManager.getLogger();
 
-    public Array(int[] array){
+    public Array(int[] array) throws ArrayException{
+        if (array == null){
+            throw new ArrayException("Passed array is null");
+        }
+        if (array.length < 1){
+            throw new ArrayException("Array size cannot be less than 1");
+        }
         this.array = array;
+        logger.info("Array object is created");
     }
 
     public Array(int n) throws ArrayException{
@@ -19,6 +26,7 @@ public class Array {
             throw new ArrayException("Array size cannot be less than 1");
         }
         this.array = new int[n];
+        logger.info("Non-initialized Array object is created");
     }
 
     public int getSize(){
@@ -32,6 +40,21 @@ public class Array {
         else{
             throw new ArrayException("Passed index is out of bounds");
         }
+    }
+
+    public int[] getClonedArray(){
+        return this.array.clone();
+    }
+
+    public void setArray(int[] array) throws ArrayException {
+        if (array == null){
+            throw new ArrayException("Passed array is null");
+        }
+        if (array.length < 1){
+            throw new ArrayException("Array size cannot be less than 1");
+        }
+        this.array = array;
+        logger.info("New array has been assigned");
     }
 
     public void setElement(int i, int value) throws ArrayException{

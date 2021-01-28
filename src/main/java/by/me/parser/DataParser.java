@@ -1,6 +1,7 @@
 package by.me.parser;
 
 import by.me.entity.Array;
+import by.me.exception.ArrayException;
 import by.me.exception.ParserException;
 import by.me.validator.Validator;
 import org.apache.logging.log4j.LogManager;
@@ -54,6 +55,12 @@ public class DataParser {
             }
             arr[i] = value;
         }
-        return new Array(arr);
+        Array array = null;
+        try {
+            array = new Array(arr);
+        } catch (ArrayException e) {
+            logger.error(e.getMessage());
+        }
+        return array;
     }
 }

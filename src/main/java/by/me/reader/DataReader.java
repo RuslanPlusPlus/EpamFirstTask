@@ -23,13 +23,19 @@ public class DataReader {
     }
 
     public List<String> readLines(String fileName) throws ReaderException {
+        if (fileName == null){
+            throw new ReaderException("NULL passed");
+        }
+        if (fileName.isEmpty()){
+            throw new ReaderException("Passed filename is empty");
+        }
         List<String> arrays = new ArrayList<>();
         Path path = Paths.get(fileName);
-        Scanner reader = null;
+        Scanner reader;
         try {
             reader = new Scanner(path);
         } catch (IOException e) {
-            throw new ReaderException("Failed to find file");
+            throw new ReaderException("Failed to find file - " + fileName);
         }
 
         while (reader.hasNextLine()){
