@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.OptionalDouble;
 import java.util.OptionalInt;
 
 import static org.testng.Assert.*;
@@ -44,6 +45,14 @@ public class ArrayStreamUtilsTest {
         OptionalInt temp = arrayUtils.findMinValue(testArray);
         int actual = temp.getAsInt();
         assertEquals(actual,expected);
+    }
+
+    @Test
+    public void testFindAverageValue() throws ArrayException {
+        double expected = 191;
+        OptionalDouble temp = arrayUtils.findAverageValue(testArray);
+        double actual = temp.getAsDouble();
+        assertEquals(actual,expected, 0.001);
     }
 
     @Test
