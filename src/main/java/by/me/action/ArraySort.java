@@ -7,9 +7,16 @@ import org.apache.logging.log4j.Logger;
 
 public class ArraySort {
 
-    private static final Logger logger = LogManager.getLogger();
+    static final Logger logger = LogManager.getLogger();
 
-    public void bubbleSort(Array array){
+    public void bubbleSort(Array array) throws ArrayException {
+        if (array == null){
+            throw new ArrayException("Passed argument is null (bubbleSort method)");
+        }
+        if (array.isEmpty()){
+            logger.error("Passed array is empty (bubbleSort method)");
+            return;
+        }
         int n = array.getSize();
         try {
             for (int i = 0; i < n - 1; i++) {
@@ -25,7 +32,14 @@ public class ArraySort {
         logger.info("Array is sorted by bubble sorting");
     }
 
-    public void selectionSort(Array array){
+    public void selectionSort(Array array) throws ArrayException {
+        if (array == null){
+            throw new ArrayException("Passed argument is null (selectionSort method)");
+        }
+        if (array.isEmpty()){
+            logger.error("Passed array is empty (selectionSort method)");
+            return;
+        }
         int n = array.getSize();
         for (int i = 0; i < n; i++){
             int minIndex = min(array, i, n);
@@ -36,7 +50,14 @@ public class ArraySort {
         logger.info("Array is sorted by selection sorting");
     }
 
-    public void insertSort(Array array){
+    public void insertSort(Array array) throws ArrayException {
+        if (array == null){
+            throw new ArrayException("Passed argument is null (insertSort method)");
+        }
+        if (array.isEmpty()){
+            logger.error("Passed array is empty (insertSort method)");
+            return;
+        }
         int n = array.getSize();
         try {
             for (int i = 1; i < n; i++){

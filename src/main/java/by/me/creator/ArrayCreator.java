@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 public class ArrayCreator {
 
-    private static final Logger logger = LogManager.getLogger();
+    static final Logger logger = LogManager.getLogger();
 
     public void fillRandomized(Array array, int minValue, int maxValue){
         if (minValue > maxValue) {
@@ -21,5 +21,6 @@ public class ArrayCreator {
                 logger.error(e.getMessage());
             }
         }
+        logger.info("Array is initialized randomly");
     }
 }

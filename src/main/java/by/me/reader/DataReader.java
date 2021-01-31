@@ -3,11 +3,12 @@ package by.me.reader;
 import by.me.exception.ReaderException;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class DataReader {
 
@@ -31,16 +32,10 @@ public class DataReader {
         }
         List<String> arrays = new ArrayList<>();
         Path path = Paths.get(fileName);
-        Scanner reader;
         try {
-            reader = new Scanner(path);
+            Files.lines(path, Charset.defaultCharset()).forEach(arrays::add);
         } catch (IOException e) {
-            throw new ReaderException("Failed to find file - " + fileName);
-        }
-
-        while (reader.hasNextLine()){
-            String array = reader.nextLine();
-            arrays.add(array);
+            throw new ReaderException("Failed to open file - " + fileName);
         }
         return arrays;
     }

@@ -12,8 +12,8 @@ import java.util.List;
 
 public class DataParser {
 
+    static final Logger logger = LogManager.getLogger();
     private static final String SPLITTER = "\\s";
-    private static final Logger logger = LogManager.getLogger();
 
     public Array parseLine(String line) throws ParserException{
         if (Validator.isValidLine(line)){

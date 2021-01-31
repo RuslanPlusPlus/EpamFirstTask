@@ -6,52 +6,76 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
 import java.util.stream.IntStream;
 
 public class ArrayStreamUtils {
 
-    private static final Logger logger = LogManager.getLogger();
+    static final Logger logger = LogManager.getLogger();
 
-    public int findMaxValue(Array array){
+    public OptionalInt findMaxValue(Array array) throws ArrayException {
+        if (array == null){
+            throw new ArrayException("Passed argument is null (findMaxValue method)");
+        }
         int[] clonedArray = array.getClonedArray();
-        int maxValue = Arrays.stream(clonedArray)
-                            .max()
-                            .getAsInt();
+        OptionalInt maxValue = Arrays.stream(clonedArray)
+                            .max();
         return maxValue;
     }
 
-    public int findMinValue(Array array){
+    public OptionalInt findMinValue(Array array) throws ArrayException {
+        if (array == null){
+            throw new ArrayException("Passed argument is null (findMinValue method)");
+        }
         int[] clonedArray = array.getClonedArray();
-        int minValue = Arrays.stream(clonedArray)
-                            .min()
-                            .getAsInt();
+        OptionalInt minValue = Arrays.stream(clonedArray)
+                            .min();
         return minValue;
     }
 
-    public int countNegativeValues(Array array){
+    public OptionalInt countNegativeValues(Array array) throws ArrayException {
+        if (array == null){
+            throw new ArrayException("Passed argument is null (countNegativeValues method)");
+        }
+        if (array.isEmpty()){
+            return OptionalInt.empty();
+        }
         int[] clonedArray = array.getClonedArray();
         int counter = (int) Arrays.stream(clonedArray)
                             .filter(x -> x < 0)
                             .count();
-        return counter;
+        return OptionalInt.of(counter);
     }
 
-    public int findElementsSum(Array array){
+    public OptionalInt findElementsSum(Array array) throws ArrayException {
+        if (array == null){
+            throw new ArrayException("Passed argument is null (findElementsSum method)");
+        }
         int[] clonedArray = array.getClonedArray();
-        int sum = Arrays.stream(clonedArray)
-                        .sum();
+        OptionalInt sum = Arrays.stream(clonedArray)
+                        .reduce(Integer::sum);
         return sum;
     }
 
-    public double findAverageValue(Array array){
+    public OptionalDouble findAverageValue(Array array) throws ArrayException {
+        if (array == null){
+            throw new ArrayException("Passed argument is null (findAverageValue method)");
+        }
         int[] clonedArray = array.getClonedArray();
-        double average = Arrays.stream(clonedArray)
-                            .average()
-                            .getAsDouble();
+        OptionalDouble average = Arrays.stream(clonedArray)
+                            .average();
         return average;
     }
 
-    public void replaceAllEvenByZero(Array array) {
+    public void replaceAllEvenByZero(Array array) throws ArrayException {
+        if (array == null){
+            throw new ArrayException("Passed argument is null (replaceAllEvenByZero method)");
+        }
+        if (array.isEmpty()){
+            logger.error("passed array is empty (replaceAllEvenByZero method)");
+            return;
+        }
         int[] clonedArray = array.getClonedArray();
         int[] updatedArray = Arrays.stream(clonedArray).map(x -> {
             if (x % 2 == 0){
@@ -64,6 +88,7 @@ public class ArrayStreamUtils {
         } catch (ArrayException e) {
             logger.error(e.getMessage());
         }
+        logger.info("replaceAllEvenByZero method is successfully done");
     }
 
 }

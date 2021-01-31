@@ -6,6 +6,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.OptionalInt;
+
 import static org.testng.Assert.*;
 
 public class ArrayStreamUtilsTest {
@@ -29,30 +31,34 @@ public class ArrayStreamUtilsTest {
     }
 
     @Test
-    public void testFindMaxValue() {
+    public void testFindMaxValue() throws ArrayException {
         int expected = 1001;
-        int actual = arrayUtils.findMaxValue(testArray);
+        OptionalInt temp = arrayUtils.findMaxValue(testArray);
+        int actual = temp.getAsInt();
         assertEquals(actual,expected);
     }
 
     @Test
-    public void testFindMinValue() {
+    public void testFindMinValue() throws ArrayException {
         int expected = -34;
-        int actual = arrayUtils.findMinValue(testArray);
+        OptionalInt temp = arrayUtils.findMinValue(testArray);
+        int actual = temp.getAsInt();
         assertEquals(actual,expected);
     }
 
     @Test
-    public void testCountNegativeValues() {
+    public void testCountNegativeValues() throws ArrayException {
         int expected = 2;
-        int actual = arrayUtils.countNegativeValues(testArray);
+        OptionalInt temp = arrayUtils.countNegativeValues(testArray);
+        int actual = temp.getAsInt();
         assertEquals(actual, expected);
     }
 
     @Test
-    public void testFindElementsSum() {
+    public void testFindElementsSum() throws ArrayException {
         int expected = 1146;
-        int actual = arrayUtils.findElementsSum(testArray);
+        OptionalInt temp = arrayUtils.findElementsSum(testArray);
+        int actual = temp.getAsInt();
         assertEquals(actual,expected);
     }
 

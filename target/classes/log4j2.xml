@@ -4,25 +4,18 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
+        <RollingFile name="RollingFile" filename="logs/log.txt" filePattern="logs/log-%d{MM-dd-yyyy}.txt.gz">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+        </RollingFile>
     </Appenders>
     <Loggers>
-        <!--
-        <Logger name= "by.me.entity.Array" level="debug" additivity="false">
-            <AppenderRef ref="Console"/>
-        </Logger>
-
-        <Logger name= "by.me.action.ArrayUtils" level="debug" additivity="false">
-            <AppenderRef ref="Console"/>
-        </Logger>
-
-        <Logger name= "by.me.parser.DataParser" level="debug" additivity="false">
-            <AppenderRef ref="Console"/>
-        </Logger>
-        -->
-
         <!-- Root Logger -->
         <Root level="all">
             <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
         </Root>
     </Loggers>
 </Configuration>

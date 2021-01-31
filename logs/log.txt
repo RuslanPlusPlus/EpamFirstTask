@@ -1,0 +1,7 @@
+18:58:28.607 [main] INFO  by.me.entity.Array - Array object is created
+19:00:02.381 [main] INFO  by.me.entity.Array - Array object is created
+19:00:02.392 [main] INFO  by.me.entity.Array - New array has been assigned
+19:00:02.393 [main] INFO  by.me.action.ArrayStreamUtils - replaceAllEvenByZero method is successfully done
+19:00:58.006 [main] INFO  by.me.entity.Array - Array object is created
+19:00:58.022 [main] INFO  by.me.entity.Array - New array has been assigned
+19:00:58.022 [main] INFO  by.me.action.ArrayStreamUtils - replaceAllEvenByZero method is successfully done

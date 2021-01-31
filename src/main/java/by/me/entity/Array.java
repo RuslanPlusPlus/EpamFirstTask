@@ -14,16 +14,13 @@ public class Array {
         if (array == null){
             throw new ArrayException("Passed array is null");
         }
-        if (array.length < 1){
-            throw new ArrayException("Array size cannot be less than 1");
-        }
         this.array = array;
         logger.info("Array object is created");
     }
 
     public Array(int n) throws ArrayException{
-        if (n < 1) {
-            throw new ArrayException("Array size cannot be less than 1");
+        if (n < 0) {
+            throw new ArrayException("Negative array size passed");
         }
         this.array = new int[n];
         logger.info("Non-initialized Array object is created");
@@ -66,6 +63,10 @@ public class Array {
         }
     }
 
+    public boolean isEmpty(){
+        return this.array.length == 0;
+    }
+
     //check if passed index belongs to array range
     private boolean checkRange(int i){
         return i >= 0 && i < this.array.length;
@@ -104,7 +105,14 @@ public class Array {
 
     @Override
     public String toString() {
-        return "Array: " +
-                Arrays.toString(array);
+        StringBuilder builder = new StringBuilder();
+        builder.append("{");
+        int size = this.array.length;
+        for (int i = 0; i < size; i++){
+            builder.append(this.array[i] + " ");
+        }
+        builder.append("}");
+        String stringArray = new String(builder);
+        return stringArray;
     }
 }
